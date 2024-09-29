@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Drug Description</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .drug,
+      .drug1 {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin: 20px auto;
+      }
+
+      .drug img,
+      .drug1 img {
+        width: 30%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+      }
+
+      .drug img:hover,
+      .drug1 img:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      .drug img:active,
+      .drug1 img:active {
+        animation: shake 0.3s;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      }
+
+      .selected {
+        position: fixed;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        transition: left 0.5s;
+        width: 30%;
+        height: auto;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .description {
+        position: fixed;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        z-index: 9;
+        background-color: #fffbe0; /* خلفية فاتحة */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        display: none;
+        max-width: 300px;
+        white-space: normal;
+        font-family: "Georgia", serif; /* خط مختلف */
+        color: #333;
+        text-align: justify;
+        line-height: 1.6; /* تحسين قراءة النص */
+        transition: all 0.4s ease;
+      }
+
+      .description h3 {
+        margin-top: 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* ظل للنص */
+      }
+
+      .description p {
+        font-size: 14px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Click to show details</h1>
+    <div class="drug">
+      <img
+        src="https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reskin/en_AE/adult/Panadol%20Extra%20455x455.jpg?auto=format"
+        alt="Panadol Extra"
+        onclick="selectDrug(this, 'Panadol Extra: A powerful analgesic and antipyretic medication. It contains paracetamol and is used to relieve mild to moderate pain, such as headaches, toothaches, and muscle aches, as well as to reduce fever. It is generally well-tolerated but should be used with caution in patients with liver disease or those consuming alcohol. Always follow the dosage instructions and consult a healthcare professional if symptoms persist.')"
+      />
+      <img
+        src="https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reskin/en_AE/adult/Panadol%20Advance%20455x455.jpg?auto=format"
+        alt="Panadol Advance"
+        onclick="selectDrug(this, 'Panadol Advance: Formulated for faster absorption, providing quick relief from pain and fever. It is suitable for adults and children over 12 years old. The medication is effective in managing symptoms associated with colds, flu, and other viral infections. Be cautious with dosages and ensure you do not exceed the recommended amount, especially if using other medications containing paracetamol.')"
+      />
+      <img
+        src="https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reskin/en_AE/adult/Panadol%20ActiFast%20455x455.jpg?auto=format"
+        alt="Panadol ActiFast"
+        onclick="selectDrug(this, 'Panadol ActiFast: Designed for rapid action to relieve pain and discomfort. Ideal for use in situations requiring quick relief, such as headaches, muscle pains, and toothaches. It is particularly beneficial for those who need immediate effects, like athletes and active individuals. Always monitor the maximum daily dosage and consult a doctor if unsure about its use.')"
+      />
+    </div>
+
+    <div class="drug">
+      <img
+        src="https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reskin/en_AE/adult/Panadol%20CF%20455x455.jpg?auto=format"
+        alt="Panadol coldFlu"
+        onclick="selectDrug(this, 'Panadol coldFlu: This formulation targets the symptoms of both cold and flu, including headaches, body aches, nasal congestion, and fever. It combines paracetamol with other active ingredients to provide comprehensive relief. It is essential to follow the recommended dosing schedule and avoid concurrent use of other medications containing similar components to prevent overdose.')"
+      />
+      <img
+        src="https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reskin/ar_AE/adult/31721-Panadol-Website-Images-(202x192)-10.jpg?auto=format"
+        alt="Panadol AllInOne"
+        onclick="selectDrug(this, 'Panadol AllInOne: A versatile product that combines pain relief, cold, and flu symptom management in one convenient dosage form. It provides relief for a range of conditions, making it a suitable choice for those seeking an all-in-one solution. Patients should be aware of any allergies to the active ingredients and consult their doctor if they are pregnant or breastfeeding before use.')"
+      />
+      <img
+        src="https://lh3.googleusercontent.com/proxy/lX9wDbsfPFQa52SxwN5ws9U7S-_Ewbt9VxnSrAN8ECBFez1IEnujpwU6GlWnCqWMMRJMLkZ0TF153p7lZUoHxwCK4AZO3u8nBo0iPE0WsIXXpIk9APPvQ4812lXuYQ"
+        alt="Panadol Night"
+        onclick="selectDrug(this, 'Panadol Night: Specifically formulated to provide relief from nighttime discomfort, helping to ensure a restful sleep. It combines pain relief with ingredients that aid in promoting sleep. Ideal for those who struggle with pain that interrupts their sleep patterns. It is important to read the label carefully and ensure it does not interfere with other medications being taken.')"
+      />
+    </div>
+
+    <div class="drug">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7co9GrnMbAHrm05dM278qRIFopBt0EaZO9Q&s"
+        alt="Ibumol"
+        onclick="selectDrug(this, 'Ibumol: A non-steroidal anti-inflammatory drug (NSAID) used to relieve pain and reduce inflammation. Effective for treating headaches, menstrual cramps, muscle pains, and arthritis. Ibumol is typically well-tolerated, but prolonged use can lead to gastrointestinal issues. Users should adhere to the prescribed dosage and consult a healthcare professional for advice on prolonged treatment.')"
+      />
+      <img
+        src="https://media.zid.store/thumbs/0a395ab0-f830-43d1-a748-253eb7272793/1f387de7-72b5-4a52-95d5-c7b3e9d6754a-thumbnail-770x770-70.jpg"
+        alt="Brufen"
+        onclick="selectDrug(this, 'Brufen: Another NSAID commonly used to treat pain and inflammation. Particularly effective for arthritis and other inflammatory conditions. Brufen can also be used for fever relief. Patients are advised to take it with food to minimize gastrointestinal discomfort and to avoid using it in conjunction with other NSAIDs.')"
+      />
+      <img
+        src="https://medstockonline.com/wp-content/uploads/2022/07/voltfast-2.jpg"
+        alt="VoltFast"
+        onclick="selectDrug(this, 'VoltFast: A fast-acting NSAID that provides quick relief from acute pain and inflammation. It is particularly useful for patients requiring immediate pain management. VoltFast should be used under the guidance of a healthcare provider, especially in those with underlying health conditions, to prevent potential side effects.')"
+      />
+    </div>
+
+    <div class="drug">
+      <img
+        src="https://cdn.chefaa.com/filters:format(webp)/public/uploads/products/relaxon-muscle-stretcher-30cap-aqf5-01669634866.png"
+        alt="Relaxon"
+        onclick="selectDrug(this, 'Relaxon: A muscle relaxant medication that alleviates muscle spasms and associated pain. It is often used in conjunction with physical therapy to treat musculoskeletal conditions. Patients should avoid driving or operating heavy machinery while using Relaxon, as it can cause drowsiness.')"
+      />
+      <img
+        src="https://chefaa.com/blog/wp-content/uploads/2019/12/%D9%81%D9%8A%D9%88%D8%B3%D9%8A%D8%AF%D9%8A%D9%86-%D9%85%D8%B1%D9%87%D9%85--300x294.webp"
+        alt="Fuciden"
+        onclick="selectDrug(this, 'Fuciden: A topical antibiotic ointment that is used to treat bacterial skin infections. It is effective against a variety of bacteria and is commonly used for wounds, cuts, and other skin conditions. Patients should follow the application instructions carefully and avoid covering the treated area with tight dressings unless advised by a doctor.')"
+      />
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaq7LTwgYU97CxWncSQ2jQY1cW4RgGg8r7VA&s"
+        alt="Bebanthen"
+        onclick="selectDrug(this, 'Bebanthen: A protective ointment used to treat and prevent skin irritations, particularly in babies. It is also effective for minor wounds, cuts, and abrasions. Bebanthen promotes skin regeneration and healing, making it suitable for daily use in sensitive skin areas.')"
+      />
+    </div>
+
+    <div class="description" id="description"></div>
+
+    <script>
+      function selectDrug(element, description) {
+        const descriptionDiv = document.getElementById("description");
+
+        if (descriptionDiv.style.display === "block") {
+          descriptionDiv.style.display = "none";
+          const drugs = document.querySelectorAll(".drug, .drug1");
+          drugs.forEach((drug) => {
+            drug.classList.remove("hidden");
+          });
+          const selectedDrug = document.querySelector(".selected");
+          if (selectedDrug) {
+            selectedDrug.remove();
+          }
+          return;
+        }
+
+        const drugs = document.querySelectorAll(".drug, .drug1");
+        drugs.forEach((drug) => {
+          drug.classList.add("hidden");
+        });
+
+        const selectedDrug = document.createElement("img");
+        selectedDrug.src = element.src;
+        selectedDrug.alt = element.alt;
+        selectedDrug.classList.add("selected");
+        document.body.appendChild(selectedDrug);
+
+        selectedDrug.onclick = function () {
+          descriptionDiv.innerHTML = `<h3>${element.alt}</h3><p>${description}</p>`;
+          descriptionDiv.style.display = "block";
+          descriptionDiv.style.right = "30%";
+          selectedDrug.style.left = "70%";
+        };
+      }
+    </script>
+  </body>
+</html>
